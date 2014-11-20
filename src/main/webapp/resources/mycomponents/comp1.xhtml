@@ -1,0 +1,17 @@
+<ui:component
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+>
+    <cc:interface>
+        <cc:attribute name="name" type="java.lang.String" required="true" />
+    </cc:interface>
+    <cc:implementation>
+        <p:panel header="Dialg Component">
+        	<p:outputLabel>#{cc.attrs.name}</p:outputLabel>
+        </p:panel>
+    </cc:implementation>
+</ui:component>

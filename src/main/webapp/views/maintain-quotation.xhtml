@@ -44,7 +44,9 @@
 			<div style="text-align: right;">
 				<p:button value="Confirm Quotation" />
 				<p:button value="Add Quotation" />
-				<p:button value="Print" />
+				<p:button value="Print" outcome="user-dlg"/>
+				<p:commandButton value="User Dialog" icon="ui-icon-extlink" actionListener="#{quotationBean.viewDialog('user-dlg')}"/>
+				<p:commandButton value="Audit Dialog" icon="ui-icon-extlink" actionListener="#{quotationBean.viewDialog('audit-dlg')}"/>
 			</div>
 		</h:form>
 	</ui:define>
