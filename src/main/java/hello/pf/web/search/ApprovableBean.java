@@ -1,7 +1,9 @@
 package hello.pf.web.search;
 
-public interface ApprovableBean<T> {
+public interface ApprovableBean<T, B> {
     
-    boolean approve(T t);
+    B approve(T t);
+    
+    B cancel(T t);
 
 }

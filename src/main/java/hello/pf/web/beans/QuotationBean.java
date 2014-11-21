@@ -15,9 +15,14 @@ import org.primefaces.context.RequestContext;
 
 @ManagedBean
 @ViewScoped
-public class QuotationBean implements ApprovableBean<Quotation>, EditableBean<Quotation>, Serializable {
+public class QuotationBean implements ApprovableBean<Quotation, QuotationBean>, EditableBean<Quotation>, Serializable {
 
     private static final long serialVersionUID = -1473868872541090990L;
+    
+    private Quotation quotation;
+    
+    public QuotationBean() {
+    }
 
     @Override
     public void edit(Quotation quotation) {
@@ -25,8 +30,20 @@ public class QuotationBean implements ApprovableBean<Quotation>, EditableBean<Qu
     }
 
     @Override
-    public boolean approve(Quotation t) {
-        return false;
+    public QuotationBean approve(Quotation t) {
+        return this;
+    }
+    
+    @Override
+    public QuotationBean cancel(Quotation t) {
+        
+        Quotation quotation = new Quotation();
+        quotation.setId(123L);
+        quotation.setName("My Quotation");
+        
+        setQuotation(quotation);
+        
+        return this;
     }
     
     
@@ -40,5 +57,14 @@ public class QuotationBean implements ApprovableBean<Quotation>, EditableBean<Qu
         options.put("contentHeight", 320);
         RequestContext.getCurrentInstance().openDialog(dialogName, options, null);
     }
+
+    public Quotation getQuotation() {
+        return quotation;
+    }
+
+    public void setQuotation(Quotation quotation) {
+        this.quotation = quotation;
+    }
+    
 
 }
