@@ -45,10 +45,26 @@ public class CarService {
     public List<Car> createCars(int size) {
         List<Car> list = new ArrayList<Car>();
         for(int i = 0 ; i < size ; i++) {
-            list.add(new Car(getRandomId(), getRandomBrand(), getRandomYear(), getRandomColor(), getRandomPrice(), getRandomSoldState()));
+            Car car = new Car(getRandomId(), getRandomBrand(), getRandomYear(), getRandomColor(), getRandomPrice(), getRandomSoldState());
+            
+            car.setDrivers(createDrivers());
+            
+            list.add(car);
         }
          
         return list;
+    }
+
+    private List<Driver> createDrivers() {
+        List<Driver> drivers = new ArrayList<>();
+        for (int j = 0; j < 10; j++) {
+            Driver driver = new Driver();
+            driver.setId(getRandomId());
+            driver.setName("Driver_" + j);
+            driver.setLicense("License_ " + j);
+            drivers.add(driver);
+        }
+        return drivers;
     }
      
     private String getRandomId() {

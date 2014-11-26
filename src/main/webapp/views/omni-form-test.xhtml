@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	template="../templates/omni-template.xhtml">
+
+
+	<ui:define name="content">
+	
+		<f:metadata>
+		    <o:viewParam name="foo" value="#{viewParamBean.foo}" />
+		</f:metadata>
+		
+		<p>
+		    First do a GET request to the current page to start using a view parameter.
+		</p>
+		<p>
+		    <h:link value="Do GET request with view param">
+		        <f:param name="foo" value="value" />
+		    </h:link>
+		</p>
+		
+		<p>
+		    Then, do one or more POSTs in an o:form to see that the GET parameter that's been used as a 
+		    view parameter in the URL is preserved.
+		</p>
+		<o:form includeViewParams="true">
+		    <h:commandLink value="POST-BACK o:form with includeViewParams" />
+		</o:form>
+		
+		<p>
+		    Now do a GET request to the current page to additionally start using GET parameters which are NOT 
+		    also view parameters.
+		</p>
+		<p>
+		    <h:link value="Do GET request with a view param and free GET parameters">
+		        <f:param name="foo" value="000" />
+		        <f:param name="bar" value="123" />
+		        <f:param name="bar" value="456" />
+		        <f:param name="baz" value="xxx" />
+		    </h:link>
+		</p>
+		
+		<p>
+		    Then, do one or more POSTs in an o:form with includeRequestParams to see that all the GET parameters 
+		    are being preserverd in the URL (try to click "POST-BACK o:form with includeViewParams" to see that only the view 
+		    param will be preserved).
+		</p>
+		<o:form includeRequestParams="true">
+		    <h:commandLink value="POST-BACK o:form with includeRequestParams" />
+		</o:form>
+		
+	</ui:define>
+
+</ui:composition>

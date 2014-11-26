@@ -25,6 +25,8 @@ public class ColumnsView implements Serializable {
     private List<ColumnModel> columns;
      
     private List<Car> cars;
+    
+    private Car selectedCar;
      
     private List<Car> filteredCars;
      
@@ -33,7 +35,9 @@ public class ColumnsView implements Serializable {
  
     @PostConstruct
     public void init() {
-        cars = service.createCars(10);
+        cars = service.createCars(100);
+        
+        setSelectedCar(cars.get(0));
          
         createDynamicColumns();
     }
@@ -66,6 +70,14 @@ public class ColumnsView implements Serializable {
         return columns;
     }
  
+    public Car getSelectedCar() {
+        return selectedCar;
+    }
+
+    public void setSelectedCar(Car selectedCar) {
+        this.selectedCar = selectedCar;
+    }
+
     private void createDynamicColumns() {
         String[] columnKeys = columnTemplate.split(" ");
         columns = new ArrayList<ColumnModel>();   

@@ -1,6 +1,7 @@
 package hello.pf;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Car implements Serializable {
 
@@ -11,6 +12,8 @@ public class Car implements Serializable {
     public String color;
     public int price;
     public boolean sold;
+    
+    public List<Driver> drivers;
 
     public Car(String model, int year, String manufacturer, String color) {
         this.model = model;
@@ -89,6 +92,14 @@ public class Car implements Serializable {
         this.sold = sold;
     }
     
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+
+    public void setDrivers(List<Driver> drivers) {
+        this.drivers = drivers;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(obj == null)

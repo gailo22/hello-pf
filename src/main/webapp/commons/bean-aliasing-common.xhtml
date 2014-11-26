@@ -2,7 +2,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pth="http://java.sun.com/jsf/passthrough">
 			
    <h1>#{bean}</h1>
     
@@ -12,6 +13,10 @@
    		
    		<p:outputLabel>Name</p:outputLabel>
    		<p:outputLabel>#{bean[obj].name}</p:outputLabel>
+   		
+   		<!-- need JSF 2.2 -->
+   		<h:inputText value="" pth:placeholder="Enter text"/>
+   		
    </p:panelGrid>
    
    
